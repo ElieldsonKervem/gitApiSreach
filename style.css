@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    font-size: 62,5%;
+    --ff-primary: 'Roboto', sans-serif;
+    --text-color:#303030;
+     
+    --hue :194;
+    --primary-color: hsl(var(--hue), 100%, 61%);
+}
+body *{
+    font-family: var(--ff-primary);
+    color: var(--text-color);
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+button {
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 0 .2rem .2rem 0;
+}
+
+button:hover {
+    cursor: pointer;
+    background: #434343e8;
+}
+
+#app{
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+#app header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+#app header h1 {
+    font-size: 2.4rem;
+}
+#app header div {
+    display: flex;
+    align-items: center;
+}
+#app header div input {
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+#app header div input:focus {
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+#app table {
+    width: 100%;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+  
+}
+
+#app table thead {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 0.2rem;
+    color: var(--ff-primary);
+    
+
+}
+#app table thead tr {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#app table thead tr th {
+    padding: 1rem;
+    flex: 1;
+}
+#app table thead tr th:last-child {
+    text-align: left;
+}
+#app tbody tr {
+   
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+#app tbody tr img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+#app table tbody tr:nth-child(odd) {
+    background: #f9f9f9;
+}
+.userGit{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+#app table tbody {
+    display: flex;
+    flex-direction: column;
+    
+}

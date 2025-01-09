@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gitAPI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Github API</h1>
+            <div>
+                <label for="search" class="srOnly">Usuário</label>
+                <input id="search" type="text" placeholder="Usuário do GitHub">
+                <button class="btnSearch" onclick="searchUser()">Procurar &plus;</button>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th>Usuários</th>
+                    <th>Repositórios</th>
+                    <th>Seguidores</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <!-- Linhas serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function getGitUser(user) {
+            const apiURL = `https://api.github.com/users/${user}`;
+
+            try {
+                const response = await fetch(apiURL);
+
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar o usuário');
+                }
+
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        function searchUser() {
+            const input = document.getElementById('search');
+            const username = input.value.trim();
+
+            if (!username) {
+                alert('Por favor, insira um nome de usuário!');
+                return;
+            }
+
+            getGitUser(username).then((userData) => {
+                if (userData) {
+                    addUserToTable(userData);
+                }
+            });
+        }
+
+        function addUserToTable(user) {
+            const table = document.getElementById('userTable');
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td class="userGit">
+                    <img src="${user.avatar_url}" alt="Avatar de ${user.login}">
+                    <a href="${user.html_url}" target="_blank">
+                        <p>${user.name || "Nome não disponível"}</p>
+                        <span>${user.login}</span>
+                    </a>
+                </td>
+                <td class="repGit">${user.public_repos}</td>
+                <td class="followsGit">${user.followers}</td>
+                <td>
+                    <button onclick="removeRow(this)">&times;</button>
+                </td>
+            `;
+
+            table.appendChild(row);
+        }
+
+        function removeRow(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+    </script>
+</body>
+</html>
