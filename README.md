@@ -60,4 +60,4 @@ Este projeto é de código aberto e distribuído sob a licença MIT. Veja o arqu
 
 
 
-![401353081-327f0f92-7378-4940-82d2-628025016f6b](https://github.com/user-attachments/assets/38b6347e-28a6-4953-b68a-f5ecbd004906)
+![image](https://github.com/user-attachments/assets/6cc44c12-0a82-4850-8674-e29b60016300)
